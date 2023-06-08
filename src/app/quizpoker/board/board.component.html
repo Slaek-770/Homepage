@@ -1,0 +1,95 @@
+<div class="header">
+  <a routerLink="/~"> Slaek-770 </a>
+</div>
+
+<div *ngIf="game.me && game.me.moderator" class="mod-wrapper" #modWrapper>
+  <h1 class="mod-wrapper-title">
+    <span
+      (mousedown)="startModWrapperMove($event)"
+    > ⤨ </span>
+
+    Game Control
+  </h1>
+  <div class="mod-section">
+    <span class="mod-section-header"> Game State </span>
+    <button (click)="startGuessPhase()"> Guess Phase </button>
+    <span class="mod-spacer">|</span>
+    <button> Bid Phase </button>
+    <span class="mod-spacer">|</span>
+    <button> Reset </button>
+  </div>
+  <div class="mod-section">
+    <span class="mod-section-header"> Rounds </span>
+    <button (click)="nextQuestion()"> Next Question </button>
+    <span class="mod-spacer">|</span>
+    <button (click)="nextHint()"> Next Hint </button>
+    <span class="mod-spacer">|</span>
+    <button (click)="realoadQuestion()"> Reload Question </button>
+  </div>
+  <div class="mod-section">
+    <span class="mod-section-header"> Log </span>
+    <app-log-output class="mod-log" overflow="scroll"></app-log-output>
+  </div>
+</div>
+
+<div class="content-wrapper">
+  <div *ngIf="!game.me" class="login-wrapper">
+    <h1> Spiel beitreten </h1>
+    <form [formGroup]="data">
+      <div class="login-field">
+        <label for="gameID"> Lobby: </label>
+        <input type="text" class="login-field-ip" id="gameID" placeholder="Adresse" formControlName="ip" spellcheck="false">
+        <input type="text" class="login-field-port" placeholder="Port" formControlName="port">
+      </div>
+      <div class="login-field login-field-error">
+        <label for="userName"> Nutzername: </label>
+        <input type="text" class="login-field-username" id="userName" formControlName="name" spellcheck="false">
+      </div>
+      <div class="clearfix">
+        <button class="login-button" (click)="login()"> Beitreten </button>
+      </div>
+
+      <div *ngIf="canBeMod">
+        <label for="moderator"> Moderator </label>
+        <input type="checkbox" id="moderator" formControlName="mod">
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="game.me" class="game-wrapper">
+    <div class="row-container">
+      <div class="player-list">
+        <app-player *ngFor="let p of game.leftPlayerList" class="player" [game]="game" [player]="p"></app-player>
+      </div>
+      <div *ngIf="game.question" class="game-overview">
+        <div class="question">
+          <span> {{ game.question.question }} </span>
+        </div>
+        <div *ngIf="game.hintLevel >= 1" class="hint"> <span class="highlighted highlight-hint">Hinweis 1</span> {{ game.question.hint0 }} </div>
+        <div *ngIf="game.hintLevel >= 2" class="hint"> <span class="highlighted highlight-hint">Hinweis 2</span> {{ game.question.hint1 }} </div>
+        <div *ngIf="game.hintLevel >= 3" class="solution"> <span class="highlighted highlight-solution">Lösung</span> {{ game.question.solution }} </div>
+      </div>
+      <div class="player-list">
+        <app-player *ngFor="let p of game.rightPlayerList" [game]="game" [player]="p"></app-player>
+      </div>
+    </div>
+    <div *ngIf="game.stage === 0" class="user-interface">
+      <input [ngClass]="{'guess-input': true, 'guess-invalid': !game.me.guess || game.me.guess.length === 0}" [(ngModel)]="game.me.guess" placeholder="Antwort">
+    </div>
+    <div *ngIf="game.stage === 1" class="user-interface">
+      <button class="bet-button bet-subtract bet-10"> -10 </button>
+      <button class="bet-button bet-subtract bet-100"> -100 </button>
+      <button class="bet-button bet-subtract bet-500"> -500 </button>
+      <button class="bet-button bet-subtract bet-1000"> -1000 </button>
+      <div class="verify-input">
+        <button class="allin"> ALL IN </button>
+        <input type="text" [placeholder]="STAKE.value || '$$'" [ngClass]="{ 'error': STAKE.invalid }" [formControl]="STAKE">
+        <button> <mat-icon [ngClass]="{ 'tick': true, 'tick-disabled': !STAKE.value, 'tick-green': STAKE.value }" title="Set Bet"> done </mat-icon> </button>
+      </div>
+      <button class="bet-button bet-add bet-1000"> +1000 </button>
+      <button class="bet-button bet-add bet-500"> +500 </button>
+      <button class="bet-button bet-add bet-100"> +100 </button>
+      <button class="bet-button bet-add bet-10"> +10 </button>
+    </div>
+  </div>
+</div>

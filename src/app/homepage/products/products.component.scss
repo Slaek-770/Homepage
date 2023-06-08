@@ -1,0 +1,86 @@
+@import "src/styles";
+
+.middle {
+  background-color: $color-slaek-bg;
+  border-radius: 50%;
+  box-shadow: 0 0 20px black;
+  cursor: pointer;
+  height: 120px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: box-shadow 1s, width 1s, height 1s, border-radius 1s;
+  width: 120px;
+
+  // FLEX
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  img {
+    display: inline-block;
+    height: 70px;
+    text-align: center;
+    width: 70px;
+  }
+}
+
+.hover-effect {
+  transition: box-shadow 1s;
+
+  &:hover {
+    box-shadow: 0 0 20px $color-slaek-fg;
+  }
+}
+
+.expanded {
+  border-radius: 20px;
+  height: 80%;
+  width: 80vw;
+}
+
+.wrapper {
+  color: $color-fancy-orange;
+  margin-left: 50%;
+  margin-top: 60px;
+  transform: translateX(-50%);
+  width: 70vw;
+}
+
+.element-title {
+  font-weight: bold;
+}
+
+.element {
+  border: 5px solid $color-fancy-orange;
+  padding: 20px;
+}
+
+.color-orange {
+  color: $color-fancy-orange;
+  transition: color 0.2s;
+
+  &:visited {
+    color: $color-fancy-orange;
+  }
+
+  &:hover {
+    color: brown;
+  }
+}
+
+.element-link {
+  text-decoration: none;
+}
+
+.play-button {
+  mat-icon {
+    transform: translateY(25%)
+  }
+
+  span {
+    font-size: 16px;
+    font-weight: bold;
+  }
+}

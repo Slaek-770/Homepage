@@ -1,0 +1,19 @@
+@import "src/styles";
+
+$dashlet-padding: 10px;
+
+.dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.dashlet {
+  background-color: $color-slaek-bg;
+  border-radius: 20px;
+  display: inline-block;
+  min-width: 120px;
+  min-height: 120px;
+  padding: $dashlet-padding;
+  filter: drop-shadow(3px 3px 5px rgba(5, 5, 5, 0.87));
+}

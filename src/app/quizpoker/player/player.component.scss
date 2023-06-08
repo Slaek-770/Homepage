@@ -1,0 +1,75 @@
+@import "src/styles";
+
+$name-height: 20px;
+
+.user-wrapper {
+  border: 2px solid $color-gold;
+}
+
+.header {
+  border-bottom: 2px solid $color-gold;
+  display: flex;
+  padding: 5px;
+}
+
+.name {
+  color: $color-gold;
+  font-size: $name-height;
+}
+
+.name-me {
+  color: $color-gray;
+}
+
+.kick-player {
+  color: $color-gray;
+  cursor: pointer;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $color-error;
+  }
+}
+
+.content {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px 5px 10px 5px;
+
+  input {
+    outline: none;
+    padding: 0;
+  }
+}
+
+.money {
+  background-color: $color-slaek-bg-bright;
+  border: none;
+  color: $color-gold;
+  display: inline-block;
+  width: 120px;
+}
+
+.money-nomoney {
+  color: $color-gray;
+}
+
+.spacer {
+  color: $color-gold;
+  display: inline-block;
+  text-align: center;
+  width: 100px;
+}
+
+.bid {
+  background-color: $color-slaek-bg-bright;
+  border: none;
+  color: $color-slaek-fg;
+  display: inline-block;
+  font-size: 20px;
+  width: 120px;
+}
+
+.bid-allin {
+  color: $color-error;
+}

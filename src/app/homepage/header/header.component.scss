@@ -1,0 +1,130 @@
+@import "src/styles";
+
+$header-height: 64px;
+
+.wrapper {
+  background-color: $color-slaek-bg;
+  border-bottom: 5px solid $color-bg;
+  color: $color-slaek-fg;
+  display: flex;
+}
+
+.logo {
+  border: 2px solid;
+  height: $header-height;
+  width: auto;
+}
+
+.nav-wrapper {
+  flex: 1;
+}
+
+.nav-element {
+  display: inline-block;
+  height: $header-height;
+  font-family: 'Urbanist', sans-serif;
+  font-weight: bold;
+  margin-left: 30px;
+
+  .active {
+    border-bottom-color: $color-slaek-fg;
+  }
+
+  & a {
+    border-bottom: 2px solid;
+    border-bottom-color: $color-slaek-bg;
+    color: $color-slaek-fg;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: $header-height;
+    text-decoration: none;
+    transition: border-bottom-color 0.2s;
+
+    &:visited {
+      color: $color-slaek-fg;
+    }
+
+    &:hover {
+      border-bottom-color: $color-slaek-fg;
+    }
+  }
+}
+
+.title {
+  cursor: pointer;
+  font-size: $header-height / 3 * 2;
+  font-style: italic;
+  font-weight: bold;
+  left: 50%;
+  position: absolute;
+  top: $header-height / 6;
+  transform: translateX(-50%);
+  z-index: 1000;
+
+  a {
+    color: brown;
+    text-decoration: none;
+
+    &:visited {
+      color: brown;
+    }
+  }
+}
+
+.title-shadow {
+  color: $color-slaek-bg;
+  -webkit-text-stroke: 1px $color-fancy-orange;
+  font-size: $header-height / 3 * 2;
+  font-style: italic;
+  font-weight: bold;
+  left: 50%;
+  position: absolute;
+  top: $header-height / 6;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+.control-wrapper {
+  align-items: center;
+  display: flex;
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 500;
+  height: $header-height;
+  margin-left: auto;
+}
+
+.control {
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 20px;
+}
+
+.control-border {
+  border: 2px solid $color-lime;
+  border-radius: 10px;
+  padding: 8px;
+  transition: border-color 0.4s;
+
+  &:hover {
+    border-color: $color-slaek-fg;
+  }
+}
+
+.control-underline {
+  border-bottom: 2px solid $color-slaek-bg;
+  transition: border-bottom-color 0.2s;
+
+  &:hover {
+    border-bottom-color: $color-slaek-fg;
+  }
+}
+
+.control-dark {
+  border-bottom: 2px solid $color-slaek-bg;
+  color: $color-lime;
+  transition: border-bottom-color 0.2s;
+
+  &:hover {
+    border-bottom-color: $color-lime;
+  }
+}

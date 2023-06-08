@@ -1,0 +1,372 @@
+@import "src/styles";
+
+$header-height: 64px;
+$question-height: 24px;
+
+button {
+  cursor: pointer;
+}
+
+//
+
+.header {
+  height: $header-height;
+  width: 100vw;
+}
+
+.content-wrapper {
+  align-items: center;
+  display: flex;
+  height: calc(100vh - #{ $header-height });
+}
+
+.login-wrapper {
+  background-color: $color-slaek-bg;
+  margin-left: 50%;
+  padding: 20px;
+  transform: translate(-50%, -#{ $header-height });
+  width: 600px;
+
+  h1 {
+    margin-bottom: 40px;
+    margin-top: 10px;
+    text-align: center;
+  }
+}
+
+.login-field {
+  height: 40px;
+  margin-bottom: 10px;
+
+  label {
+    display: inline-block;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    width: 120px;
+  }
+
+  input {
+    background-color: $color-slaek-bg-bright;
+    border: 2px solid $color-slaek-bg-bright;
+    border-radius: 5px;
+    color: $color-slaek-fg;
+    height: 25px;
+    outline: none;
+    padding: 5px 10px 5px 10px;
+
+    &:focus {
+      border-color: $color-slaek-fg;
+    }
+  }
+}
+
+.login-field-ip {
+  width: 225px;
+}
+
+.login-field-port {
+  margin-left: 10px;
+  width: 60px;
+}
+
+.login-field-username {
+  width: 320px;
+}
+
+.login-field-error {
+  border-color: $color-fancy-orange;
+}
+
+.login-button {
+  background-color: $color-slaek-bg;
+  border: 2px solid $color-lime;
+  border-radius: 5px;
+  color: $color-lime;
+  cursor: pointer;
+  float: right;
+  font-family: 'Urbanist', sans-serif;
+  font-size: 16px;
+  outline: none;
+  padding: 5px 10px 5px 10px;
+  transition: color 0.2s, border-color 0.2s;
+
+  &:hover {
+    border-color: $color-slaek-fg;
+    color: $color-slaek-fg;
+  }
+}
+
+// === MODERATOR ===
+
+.mod-wrapper {
+  background-color: $color-slaek-bg-bright;
+  border: 2px solid $color-slaek-fg-0;
+  display: block;
+  padding: 10px;
+  position: fixed;
+  z-index: 999;
+}
+
+.mod-wrapper-title {
+  text-align: center;
+
+  span {
+    cursor: pointer;
+    float: left;
+  }
+}
+
+.mod-section {
+  margin-top: 10px;
+
+  button {
+    background-color: $color-slaek-bg-bright;
+    color: $color-slaek-fg;
+  }
+}
+
+.mod-section-header {
+  display: block;
+}
+
+.mod-spacer {
+  display: inline-block;
+  text-align: center;
+  width: 20px;
+}
+
+.mod-log {
+  background-color: $color-slaek-fg-0;
+  border: none;
+  color: $color-slaek-fg;
+  font-family: monospace;
+  overflow-y: scroll;
+}
+
+// === GAME ===
+
+.game-wrapper {
+  font-family: 'Urbanist', sans-serif;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.row-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+// -- OVERVIEW --
+
+.player-list {
+  flex-grow: 1;
+  padding: 10px;
+}
+
+/* Margin between the player components. */
+.player-list > :not(:first-child) {
+  display: block;
+  margin-top: 10px;
+}
+
+.game-overview {
+  flex-grow: 2;
+  font-family: 'Urbanist', sans-serif;
+  padding: 10px;
+  min-width: 40vw;
+}
+
+.question {
+  border-bottom: 2px solid lighten($color-slaek-bg-bright, 5);
+  display: flex;
+  justify-content: center;
+  line-height: $question-height;
+  margin-bottom: 20px;
+  padding: 10px 0 10px 0;
+
+  span {
+    color: $color-slaek-fg;
+    font-size: $question-height;
+  }
+}
+
+.hint {
+  margin-top: 10px;
+}
+
+.solution {
+  margin-top: 10px;
+}
+
+.highlighted {
+  border-radius: 8px;
+  color: $color-slaek-bg-bright;
+  display: inline-block;
+  padding: 1px 5px 1px 5px;
+}
+
+.highlight-question {
+  background-color: blueviolet;
+}
+
+.highlight-hint {
+  background-color: cornflowerblue;
+}
+
+.highlight-solution {
+  background-color: #f57542;
+}
+
+// ---
+
+.user-interface {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+// === GUESS ===
+
+.guess-input {
+  background-color: $color-slaek-bg-bright;
+  border: 2px solid $color-slaek-fg;
+  border-radius: 5px;
+  color: $color-slaek-fg;
+  display: inline-block;
+  font-family: 'Urbanist', sans-serif;
+  font-size: 16px;
+  margin: 0 10% 0 10%;
+  outline: none;
+  padding: 15px 5px 15px 5px;
+  text-align: center;
+  transition: box-shadow 0.2s;
+  width: 200px;
+}
+
+.guess-invalid {
+  border-color: $color-error;
+  color: $color-error;
+
+  &::placeholder {
+    color: $color-error;
+    transition: transform 0.2s;
+  }
+
+  &:focus::placeholder {
+    color: $color-gray;
+    transform: translateX(-25%);
+  }
+}
+
+// === BETS ===
+
+.bet-button {
+  background-color: $color-slaek-bg-bright;
+  cursor: pointer;
+  font-family: 'Urbanist', sans-serif;
+}
+
+.bet-1000 {
+  height: 45px;
+}
+
+.bet-500 {
+  height: 40px;
+}
+
+.bet-100 {
+  height: 35px;
+}
+
+.bet-10 {
+  height: 30px;
+}
+
+.bet-add {
+  color: $color-slaek-fg;
+  margin-left: 5px;
+}
+
+.bet-subtract {
+  color: $color-error;
+  margin-right: 5px;
+}
+
+.verify-input {
+  background-color: $color-slaek-bg-bright;
+  border: 2px solid $color-slaek-fg;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 5px 10px 15px 5px;
+
+  .allin {
+    color: $color-error;
+  }
+
+  .error {
+    box-shadow: 0 2px 0 $color-error;
+    color: $color-error;
+
+    &:focus {
+      box-shadow: 0 2px 0 $color-error;
+    }
+  }
+
+  input {
+    background-color: $color-slaek-bg-bright;
+    border: none;
+    box-shadow: 0 2px 0 $color-lime;
+    color: $color-slaek-fg;
+    display: inline-block;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 16px;
+    margin: 0 10px 0 10px;
+    outline: none;
+    padding-bottom: 5px;
+    text-align: center;
+    transition: box-shadow 0.2s;
+    width: 100px;
+
+    &:focus {
+      box-shadow: 0 2px 0 $color-slaek-fg;
+    }
+
+    &::placeholder {
+      color: $color-gray;
+      font-family: 'Urbanist', sans-serif;
+      text-align: right;
+    }
+  }
+
+  button {
+    background-color: $color-slaek-bg-bright;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .tick {
+    font-size: 25px;
+    transform: translateY(10px);
+    transition: color 0.2s;
+  }
+
+  .tick-disabled {
+    color: $color-gray;
+
+    &:hover {
+      color: darken($color-gray, 2);
+    }
+  }
+
+  .tick-green {
+    color: $color-lime;
+
+    &:hover {
+      color: $color-slaek-fg;
+    }
+  }
+
+}

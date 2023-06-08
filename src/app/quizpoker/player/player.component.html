@@ -1,0 +1,23 @@
+<div *ngIf="game && player" class="user-wrapper">
+  <div class="header">
+    <span class="name"> {{ player.username }} <span *ngIf="isMe" class="name-me"> (Ich) </span> </span>
+    <mat-icon *ngIf="moderatorView && !isMe" class="kick-player" title="Kick Player"> close </mat-icon>
+  </div>
+
+  <div class="content">
+    <!-- Money -->
+    <span *ngIf="!moderatorView" [ngClass]="{'money': true, 'money-nomoney': isNoMoney}"> {{ player.money }} </span>
+    <div *ngIf="moderatorView">
+      <input class="money" [value]="player.money">
+    </div>
+
+    <!-- Spacer -->
+    <span *ngIf="!isNoMoney" class="spacer"> ➤ </span>
+
+    <!-- Bid -->
+    <span *ngIf="!moderatorView" [ngClass]="{'bid': true, 'bid-allin': isAllin || isNoMoney}"> {{ isNoMoney ? 'Pleite' : (isAllin ? 'ALL IN' : player.currentBid) }} </span>
+    <div *ngIf="moderatorView">
+      <input class="bid" [value]="player.currentBid">
+    </div>
+  </div>
+</div>

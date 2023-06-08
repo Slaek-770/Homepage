@@ -1,0 +1,12 @@
+<div class="wrapper"
+     [style.maxWidth]="maxWidth"
+     [style.maxHeight]="maxHeight"
+     [style.overflow]="overflow"
+>
+  <div *ngFor="let entry of logService.log$ | async">
+    <span> [{{ formatTime(entry.timestamp) }}] </span>
+    <span *ngFor="let elem of entry.elements" [style]="elem.style || ''" [ngClass]="elem.styleClasses">
+      {{ elem.content }}
+    </span>
+  </div>
+</div>

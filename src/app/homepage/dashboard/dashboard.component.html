@@ -1,0 +1,10 @@
+<div class="dashboard">
+  <div *ngFor="let entry of data" class="dashlet">
+    <div class="dashlet-header">
+      <h2> {{ entry.title }} </h2>
+    </div>
+    <div class="dashlet-content">
+      <p> {{ entry.data }} </p>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+@import "src/assets/styles/fonts";
+
+$color-slaek-bg: #0d1019;
+$color-slaek-bg-bright: #151a29;
+
+$color-slaek-fg: #79ff97;
+$color-slaek-fg-0: #2d5d43;
+
+$color-fancy-orange: #f57542;
+$color-bg: #0a0a0a;
+$color-error: #bd0912;
+$color-lime: $color-slaek-fg-0;
+$color-gray: rgba(100, 100, 100, 0.89);
+$color-gold: #f5a442;
+
+body {
+  background-color: $color-slaek-bg-bright;
+  color: $color-lime;
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 100;
+  margin: 0;
+}
+
+.clearfix {
+  overflow: auto;
+
+  &::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+}
